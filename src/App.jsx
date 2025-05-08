@@ -8,7 +8,7 @@ function App() {
   const [task, setTask] = useState('');
   const [todos, setTodos] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(''); // ✅ search input state
+  const [searchQuery, setSearchQuery] = useState('');
 
   // ✅ Create or update task
   function handleAddOrUpdate() {
@@ -34,7 +34,7 @@ function App() {
 
   // ✅ Delete task
   function handleDelete(index) {
-    setTodos(todos.filter(function (anything, i) {
+    setTodos(todos.filter(function (_, i) {
       return i !== index;
     }));
 
@@ -44,9 +44,15 @@ function App() {
     }
   }
 
+  // ✅ Read (filtered tasks based on search)
+  function getFilteredTodos() {
+    return todos.filter(function (todo) {
+      return todo.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+  }
+
   return (
     <div className="app-container">
-
       <Navbarc />
 
       <Container fluid className="main-content">
@@ -54,7 +60,6 @@ function App() {
           <h2 className="text-center mb-4">📝 Todo List</h2>
 
           <Row className="mb-3">
-
             <Col md={8}>
               <Form.Control
                 type="text"
@@ -65,8 +70,6 @@ function App() {
                 }}
               />
             </Col>
-
-
             <Col md={4}>
               <Button
                 variant={editIndex !== null ? 'warning' : 'primary'}
@@ -75,12 +78,10 @@ function App() {
                 {editIndex !== null ? 'Update Task' : 'Add Task'}
               </Button>
             </Col>
-            
           </Row>
 
           <p className="text-muted">Total Tasks: {todos.length}</p>
 
-          {/* ✅ Search bar */}
           <Form.Control
             type="text"
             placeholder="Search tasks..."
@@ -92,35 +93,37 @@ function App() {
           />
 
           <ListGroup>
-            {todos
-              .filter(function (todo) {
-                return todo.toLowerCase().includes(searchQuery.toLowerCase());
-              })
-              .map(function (todo, index) {
-                return (
-                  <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
-
-                    <span>{index + 1}. {todo}</span>
-
-                    <div>
-
-                      <Button variant="secondary"
-                        size="sm"
-                        className="me-2"
-                        onClick={function () { handleEdit(index); }}
-                      > Edit </Button>
-
-
-                      <Button variant="danger"
-                        size="sm"
-                        onClick={function () { handleDelete(index); }}
-                      > Delete </Button>
-
-                    </div>
-                    
-                  </ListGroup.Item>
-                );
-              })}
+            {getFilteredTodos().map(function (todo, index) {
+              return (
+                <ListGroup.Item
+                  key={index}
+                  className="d-flex justify-content-between align-items-center"
+                >
+                  <span>{index + 1}. {todo}</span>
+                  <div>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="me-2"
+                      onClick={function () {
+                        handleEdit(index);
+                      }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={function () {
+                        handleDelete(index);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              );
+            })}
           </ListGroup>
         </div>
       </Container>
