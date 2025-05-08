@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navbar.css';
 
-export default function navbarc() {
+export default function Navbarc() {
   return (
 <>
     <Navbar expand="lg" className="bg-body-tertiary">
