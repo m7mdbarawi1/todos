@@ -1,0 +1,65 @@
+/* Navbar Custom Styling */
+.navbar {
+    background-color: #003366 !important; /* Deep navy */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navbar .navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .navbar .nav-link {
+    color: #f0f0f0 !important;
+    margin-right: 15px;
+    font-weight: 500;
+  }
+  
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus {
+    color: #66ccff !important;
+    text-decoration: underline;
+  }
+  
+  .navbar .nav-link.disabled {
+    color: #999999 !important;
+    pointer-events: none;
+  }
+  
+  .navbar .dropdown-menu {
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .dropdown-item {
+    color: #333;
+  }
+  
+  .navbar .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .navbar form.d-flex {
+    margin-left: auto;
+  }
+  
+  .navbar input.form-control {
+    border-radius: 0;
+    border: 1px solid #ccc;
+  }
+  
+  .navbar button.btn-outline-success {
+    border-radius: 0;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  
+  .navbar button.btn-outline-success:hover {
+    background-color: #66ccff;
+    color: #003366;
+    border-color: #66ccff;
+  }
+  
