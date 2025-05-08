@@ -92,14 +92,13 @@ function App() {
             }}
           />
 
-          <ListGroup>
-            {getFilteredTodos().map(function (todo, index) {
+            {getFilteredTodos().map(function (any, index) {
               return (
                 <ListGroup.Item
                   key={index}
                   className="d-flex justify-content-between align-items-center"
                 >
-                  <span>{index + 1}. {todo}</span>
+                  <span>{index + 1}. {any}</span>
                   <div>
                     <Button
                       variant="secondary"
@@ -111,6 +110,7 @@ function App() {
                     >
                       Edit
                     </Button>
+
                     <Button
                       variant="danger"
                       size="sm"
@@ -120,11 +120,11 @@ function App() {
                     >
                       Delete
                     </Button>
+                    
                   </div>
                 </ListGroup.Item>
               );
             })}
-          </ListGroup>
         </div>
       </Container>
 
